@@ -1,5 +1,5 @@
 from django import forms
-
+from django.contrib.auth.models import User
 class LoginForm(forms.Form):
     username = forms.CharField(
         max_length=100, 
@@ -10,7 +10,6 @@ class LoginForm(forms.Form):
     )
 
 
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 class SignupForm(forms.ModelForm):

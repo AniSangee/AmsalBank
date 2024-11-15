@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wj@dp%943mzn9#vh6f=_sj_xhsm6461ao8h(7$a5v+tb)60bs7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -127,3 +127,7 @@ STATICFILES_DIR =[
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Store sessions in the database
+SESSION_COOKIE_AGE = 60 * 60 * 24  # 1 day
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Expire session on browser close
