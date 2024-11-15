@@ -16,3 +16,4 @@ urlpatterns = [
     path("withdraw/<str:account_number>", withdraw, name='withdraw'),
     path("balance/<str:account_number>", balance, name='balance'),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
