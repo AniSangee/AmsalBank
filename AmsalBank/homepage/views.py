@@ -10,10 +10,11 @@ def About(request):
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
 from django.contrib import messages
-
+from django.views.decorators.csrf import csrf_protect
+@csrf_protect
 def Login(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -56,7 +57,7 @@ from django.contrib import messages
 from .models import Account
 from .forms import AccountCreationForm
 
-@login_required
+@login_required(login_url="login")
 def create_account(request):
     if request.method == "POST":
         form = AccountCreationForm(request.POST)
@@ -78,7 +79,7 @@ def create_account(request):
 # account list
 from django.contrib.auth.decorators import login_required
 
-@login_required
+@login_required(login_url="login")
 def account_list(request):
     # Retrieve all accounts for the logged-in user
     accounts = request.user.accounts.all()

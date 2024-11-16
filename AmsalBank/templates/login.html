@@ -11,8 +11,9 @@
         {% endfor %}
       {% endif %}
       
-      <form method="post">
-        {% csrf_token %} {{ form.non_field_errors }}
+      <form method="post"> {% csrf_token %}
+     
+       {{ form.non_field_errors }}
             <div class="form-group">
                 {{ form.username.label_tag }}
                 {{ form.username }}
